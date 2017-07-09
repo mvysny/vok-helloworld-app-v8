@@ -15,6 +15,9 @@ class ArticlesView: VerticalLayout(), View {
         label("Listing Articles") {
             styleName = ValoTheme.LABEL_H1
         }
+        button("New Article", { navigateToView<CreateArticleView>() }) {
+            styleName = ValoTheme.BUTTON_LINK
+        }
         grid = grid(Article::class, null, dataSource) {
             expandRatio = 1f; setSizeFull()
             showColumns(Article::id, Article::title, Article::text)

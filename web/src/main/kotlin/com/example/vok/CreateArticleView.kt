@@ -25,6 +25,9 @@ class CreateArticleView: VerticalLayout(), View {
                 ArticleView.navigateTo(article.id!!)
             }
         })
+        button("Back", { navigateToView<ArticlesView>() }) {
+            styleName = ValoTheme.BUTTON_LINK
+        }
     }
     override fun enter(event: ViewChangeListener.ViewChangeEvent?) {
     }

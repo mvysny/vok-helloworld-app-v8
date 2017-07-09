@@ -5,6 +5,7 @@ import com.github.vok.karibudsl.*
 import com.vaadin.navigator.*
 import com.vaadin.ui.FormLayout
 import com.vaadin.ui.Label
+import com.vaadin.ui.themes.ValoTheme
 
 @AutoView
 class ArticleView: FormLayout(), View {
@@ -16,6 +17,9 @@ class ArticleView: FormLayout(), View {
         }
         text = label {
             caption = "Text:"
+        }
+        button("Back", { navigateToView<ArticlesView>() }) {
+            styleName = ValoTheme.BUTTON_LINK
         }
     }
     override fun enter(event: ViewChangeListener.ViewChangeEvent) {
