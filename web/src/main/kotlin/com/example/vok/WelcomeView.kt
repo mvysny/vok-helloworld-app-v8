@@ -9,7 +9,7 @@ import com.vaadin.ui.Alignment
 import com.vaadin.ui.VerticalLayout
 import com.vaadin.ui.themes.ValoTheme
 
-@AutoView("")
+@AutoView("old-welcome")
 class WelcomeView: VerticalLayout(), View {
     init {
         setSizeFull()
