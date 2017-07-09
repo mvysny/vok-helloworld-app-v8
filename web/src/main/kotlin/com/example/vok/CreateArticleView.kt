@@ -1,8 +1,7 @@
 package com.example.vok
 
 import com.github.vok.karibudsl.*
-import com.vaadin.navigator.View
-import com.vaadin.navigator.ViewChangeListener
+import com.vaadin.navigator.*
 import com.vaadin.ui.VerticalLayout
 import com.vaadin.ui.themes.ValoTheme
 
@@ -20,6 +19,10 @@ class CreateArticleView: VerticalLayout(), View {
             bind(binder).bind(Article::text)
         }
         button("Save Article", {
+            val article = Article()
+            if (binder.writeBeanIfValid(article)) {
+                article.save()
+            }
         })
     }
     override fun enter(event: ViewChangeListener.ViewChangeEvent?) {
