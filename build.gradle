@@ -1,0 +1,43 @@
+buildscript {
+    ext.kotlin_version = '1.1.3-2'
+    ext.vaadin_version = '8.1.0.rc1'
+}
+
+plugins {
+    id "org.jetbrains.kotlin.jvm" version "1.1.3-2"
+}
+
+defaultTasks 'clean', 'build'
+
+
+allprojects {
+    group 'com.example.vok'
+    version '1.0-SNAPSHOT'
+}
+
+subprojects {
+
+    repositories {
+        mavenCentral()
+        jcenter()
+        maven {
+            name 'vaadin-addons'
+            url 'http://maven.vaadin.com/vaadin-addons'
+        }
+        maven {
+            name 'vaadin-prereleases'
+            url 'https://maven.vaadin.com/vaadin-prereleases'
+        }
+        maven {
+            url "https://dl.bintray.com/mvysny/vaadin-on-kotlin"
+        }
+    }
+
+    // for Travis to record failures: http://stackoverflow.com/questions/28614865/how-to-read-test-result-reports-on-travis-ci/28617954#28617954
+    test {
+        testLogging {
+            events "failed"
+            exceptionFormat "full"
+        }
+    }
+}
