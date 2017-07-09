@@ -24,6 +24,12 @@ class ArticlesView: VerticalLayout(), View {
             showColumns(Article::id, Article::title, Article::text)
             addColumn({ "Show" }, ButtonRenderer<Article>({ event -> ArticleView.navigateTo(event.item.id!!) }))
             addColumn({ "Edit" }, ButtonRenderer<Article>({ event -> EditArticleView.navigateTo(event.item.id!!) }))
+            addColumn({ "Destroy" }, ButtonRenderer<Article>({ event ->
+                confirmDialog {
+                    event.item.delete()
+                    this@grid.dataProvider.refreshAll()
+                }
+            }))
         }
     }
     override fun enter(event: ViewChangeListener.ViewChangeEvent?) {
