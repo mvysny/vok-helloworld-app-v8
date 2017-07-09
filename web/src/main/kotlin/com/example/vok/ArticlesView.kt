@@ -4,6 +4,7 @@ import com.github.vok.framework.sql2o.vaadin.dataProvider
 import com.github.vok.karibudsl.*
 import com.vaadin.navigator.*
 import com.vaadin.ui.*
+import com.vaadin.ui.renderers.ButtonRenderer
 import com.vaadin.ui.themes.ValoTheme
 
 @AutoView
@@ -21,6 +22,8 @@ class ArticlesView: VerticalLayout(), View {
         grid = grid(Article::class, null, dataSource) {
             expandRatio = 1f; setSizeFull()
             showColumns(Article::id, Article::title, Article::text)
+            addColumn({ "Show" }, ButtonRenderer<Article>({ event -> ArticleView.navigateTo(event.item.id!!) }))
+            addColumn({ "Edit" }, ButtonRenderer<Article>({ event -> EditArticleView.navigateTo(event.item.id!!) }))
         }
     }
     override fun enter(event: ViewChangeListener.ViewChangeEvent?) {
