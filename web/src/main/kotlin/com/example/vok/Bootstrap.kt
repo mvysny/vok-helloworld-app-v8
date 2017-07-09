@@ -1,17 +1,14 @@
 package com.example.vok
 
 import com.github.vok.framework.VaadinOnKotlin
-import com.github.vok.framework.entityManagerFactory
-import com.github.vok.framework.getDataSource
+import com.github.vok.framework.sql2o.dataSource
+import com.github.vok.framework.sql2o.dataSourceConfig
 import com.vaadin.annotations.VaadinServletConfiguration
 import com.vaadin.server.VaadinServlet
-import org.atmosphere.util.annotation.AnnotationDetector
 import org.flywaydb.core.Flyway
-import org.hibernate.jpa.AvailableSettings
+import org.h2.Driver
 import org.slf4j.LoggerFactory
 import org.slf4j.bridge.SLF4JBridgeHandler
-import javax.persistence.Entity
-import javax.persistence.Persistence
 import javax.servlet.ServletContextEvent
 import javax.servlet.ServletContextListener
 import javax.servlet.annotation.WebListener
@@ -32,12 +29,17 @@ import javax.ws.rs.core.Application
 class Bootstrap: ServletContextListener {
     override fun contextInitialized(sce: ServletContextEvent?) {
         log.info("Starting up")
-        discoverJpaEntities()
+        VaadinOnKotlin.dataSourceConfig.apply {
+            driverClassName = Driver::class.java.name
+            jdbcUrl = "jdbc:h2:mem:test;DB_CLOSE_DELAY=-1"
+            username = "sa"
+            password = ""
+        }
         log.info("Initializing VaadinOnKotlin")
         VaadinOnKotlin.init()
         log.info("Running DB migrations")
         val flyway = Flyway()
-        flyway.dataSource = VaadinOnKotlin.getDataSource()
+        flyway.dataSource = VaadinOnKotlin.dataSource
         flyway.migrate()
         log.info("Initialization complete")
     }

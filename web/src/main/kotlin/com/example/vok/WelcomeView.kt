@@ -23,8 +23,11 @@ class WelcomeView: VerticalLayout(), View {
             image(resource = ThemeResource("images/chucknorris.jpg"))
             label { html("<strong>Vaadin version: </strong> ${Version.getFullVersion()}") }
             label { html("<strong>Kotlin version: </strong> ${KotlinVersion.CURRENT}") }
+            label { html("<strong>JVM version: </strong> $jvmVersion") }
         }
     }
     override fun enter(event: ViewChangeListener.ViewChangeEvent?) {
     }
 }
+
+val jvmVersion: String get() = System.getProperty("java.version")
