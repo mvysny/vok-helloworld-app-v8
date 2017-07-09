@@ -1,11 +1,14 @@
 package com.example.vok
 
-import com.github.vok.framework.sql2o.Dao
-import com.github.vok.framework.sql2o.Entity
+import com.github.vok.framework.sql2o.*
+import org.hibernate.validator.constraints.Length
+import javax.validation.constraints.NotNull
 
 data class Article(
         override var id: Long? = null,
 
+        @field:NotNull
+        @field:Length(min = 5)
         var title: String? = null,
 
         var text: String? = null

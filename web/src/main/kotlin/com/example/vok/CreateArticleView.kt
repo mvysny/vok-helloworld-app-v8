@@ -2,6 +2,7 @@ package com.example.vok
 
 import com.github.vok.karibudsl.*
 import com.vaadin.navigator.*
+import com.vaadin.server.UserError
 import com.vaadin.ui.VerticalLayout
 import com.vaadin.ui.themes.ValoTheme
 
@@ -18,11 +19,13 @@ class CreateArticleView: VerticalLayout(), View {
         textArea("Text") {
             bind(binder).bind(Article::text)
         }
-        button("Save Article", {
+        button("Save Article", { event ->
             val article = Article()
-            if (binder.writeBeanIfValid(article)) {
+            if (binder.validate().isOk && binder.writeBeanIfValid(article)) {
                 article.save()
                 ArticleView.navigateTo(article.id!!)
+            } else {
+                event.button.componentError = UserError("There are invalid fields")
             }
         })
         button("Back", { navigateToView<ArticlesView>() }) {
