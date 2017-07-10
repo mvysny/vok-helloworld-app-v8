@@ -31,6 +31,10 @@ class MyUI : UI() {
     private val content = Content()
 
     override fun init(request: VaadinRequest?) {
+        if (LoginService.currentUser == null) {
+            setContent(LoginForm())
+            return
+        }
         setContent(content)
         navigator = Navigator(this, content as ViewDisplay)
         navigator.addProvider(autoViewProvider)
