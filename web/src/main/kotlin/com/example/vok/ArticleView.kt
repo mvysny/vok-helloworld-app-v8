@@ -1,38 +1,30 @@
 package com.example.vok
 
 import com.github.vok.framework.sql2o.get
-import com.github.vok.framework.sql2o.vaadin.getAll
 import com.github.vok.karibudsl.*
 import com.vaadin.navigator.*
-import com.vaadin.server.UserError
 import com.vaadin.ui.*
 import com.vaadin.ui.themes.ValoTheme
 
 @AutoView
-class ArticleView: FormLayout(), View {
+class ArticleView: VerticalLayout(), View {
     private lateinit var article: Article
-    private val title: Label
-    private val text: Label
-    private val comments: Label
-    private val commentBinder = beanValidationBinder<Comment>()
-    private lateinit var createComment: Button
+    private lateinit var title: Label
+    private lateinit var text: Label
+    private val comments: CommentsComponent
+    private val newComment: NewCommentForm
     init {
-        title = label {
-            caption = "Title:"
-        }
-        text = label {
-            caption = "Text:"
-        }
-        comments = label { caption = "Comments" }
         formLayout {
-            caption = "Add a comment:"
-            textField("Commenter:") {
-                bind(commentBinder).bind(Comment::commenter)
+            title = label {
+                caption = "Title:"
             }
-            textField("Body:") {
-                bind(commentBinder).bind(Comment::body)
+            text = label {
+                caption = "Text:"
             }
-            createComment = button("Create", { createComment() })
+        }
+        comments = commentsComponent()
+        newComment = newCommentForm {
+            commentCreatedListener = { comments.refresh() }
         }
         button("Edit", { EditArticleView.navigateTo(article.id!!) }) {
             styleName = ValoTheme.BUTTON_LINK
@@ -46,27 +38,10 @@ class ArticleView: FormLayout(), View {
         article = Article[articleId]
         title.value = article.title
         text.value = article.text
+        comments.articleId = article.id!!
+        newComment.article = article
     }
-    private fun createComment() {
-        val comment = Comment()
-        if (!commentBinder.validate().isOk || !commentBinder.writeBeanIfValid(comment)) {
-            createComment.componentError = UserError("There are invalid fields")
-        } else {
-            createComment.componentError = null
-            comment.article_id = article.id
-            comment.save()
-            refreshComments()
-            commentBinder.readBean(Comment())  // this clears the comment fields
-        }
-    }
-    private fun refreshComments() {
-        comments.html(
-            // force-update the comments list.
-            article.comments.getAll().joinToString("") { comment ->
-                "<p><strong>Commenter:</strong>${comment.commenter}</p><p><strong>Comment:</strong>${comment.body}</p>"
-            }
-        )
-    }
+
     companion object {
         fun navigateTo(articleId: Long) = navigateToView<ArticleView>(articleId.toString())
     }
