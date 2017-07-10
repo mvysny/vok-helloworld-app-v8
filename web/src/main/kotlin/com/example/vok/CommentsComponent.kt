@@ -4,6 +4,7 @@ import com.github.vok.framework.sql2o.get
 import com.github.vok.framework.sql2o.vaadin.getAll
 import com.github.vok.karibudsl.*
 import com.vaadin.ui.*
+import com.vaadin.ui.themes.ValoTheme
 
 class CommentsComponent : VerticalLayout() {
     var articleId: Long = 0L
@@ -17,6 +18,10 @@ class CommentsComponent : VerticalLayout() {
         Article[articleId].comments.getAll().forEach { comment ->
             label {
                 html("<p><strong>Commenter:</strong>${comment.commenter}</p><p><strong>Comment:</strong>${comment.body}</p>")
+            }
+            button("Delete comment") {
+                styleName = ValoTheme.BUTTON_LINK
+                onLeftClick { comment.delete(); refresh() }
             }
         }
     }
