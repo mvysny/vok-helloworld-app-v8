@@ -22,8 +22,8 @@ gretty {
 }
 
 dependencies {
-    compile 'com.github.vok:vok-framework:0.2.4'
-    compile 'com.github.vok:vok-framework-sql2o:0.2.4'
+    compile 'com.github.vok:vok-framework:0.2.5'
+    compile 'com.github.vok:vok-framework-sql2o:0.2.5'
 
     // logging
     // currently we are logging through the SLF4J API to LogBack. See logback.xml file for the logger configuration
