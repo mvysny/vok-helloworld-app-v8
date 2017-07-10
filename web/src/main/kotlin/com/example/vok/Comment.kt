@@ -20,6 +20,6 @@ data class Comment(
 ) : Entity<Long> {
     companion object : Dao<Comment>
 
-    @JsonIgnore
-    var article: Article? = if (article_id == null) null else Article.findById(article_id!!)
+    @get:JsonIgnore
+    val article: Article? get() = if (article_id == null) null else Article.findById(article_id!!)
 }
