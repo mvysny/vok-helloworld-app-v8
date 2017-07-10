@@ -20,4 +20,9 @@ data class Article(
 
     @get:JsonIgnore
     val comments: DataProvider<Comment, Filter<Comment>?> get() = Comment.dataProvider.and { Comment::article_id eq id }
+
+    override fun delete() {
+        Comment.deleteBy { Comment::article_id eq id }
+        super.delete()
+    }
 }
