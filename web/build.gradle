@@ -9,8 +9,8 @@ apply plugin: 'war'
 
 vaadin {
     version vaadin_version
-    manageDependencies = false  // 'true' doesn't work with Gretty - Gretty won't pull in Vaadin dependencies on appRun and will crash because of missing widgetset
-    // have to use Gretty here, disable Vaadin Gradle Plugin jetty support for now
+//    manageDependencies = false  // must be true otherwise Intellij reimport won't work:
+    // https://github.com/johndevs/gradle-vaadin-plugin/issues/451
 //    logToConsole = true
 //    vaadinRun {
 //        server = 'jetty'
@@ -32,7 +32,8 @@ dependencies {
     // this will configure Vaadin to log to SLF4J
     compile 'org.slf4j:jul-to-slf4j:1.7.25'
 
-    // Vaadin
+    // Vaadin - has to be here even though vaadin.manageDependencies is true:
+    // Gretty won't pull in Vaadin dependencies on appRun and will crash because of missing widgetset
     compile "com.vaadin:vaadin-client-compiled:$vaadin_version"
     compile "com.vaadin:vaadin-server:$vaadin_version"
     compile "com.vaadin:vaadin-push:$vaadin_version"
