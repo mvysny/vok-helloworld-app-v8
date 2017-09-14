@@ -1,24 +1,18 @@
 plugins {
     // need to use Gretty here because of https://github.com/johndevs/gradle-vaadin-plugin/issues/317
     id "org.akhikhl.gretty" version "2.0.0"
-    id 'com.devsoap.plugin.vaadin' version '1.2.1'
+    id 'com.devsoap.plugin.vaadin' version '1.2.3'
 }
 
 apply plugin: 'kotlin'
 apply plugin: 'war'
 
-vaadin {
-    version vaadin_version
-//    manageDependencies = false  // must be true otherwise Intellij reimport won't work:
-    // https://github.com/johndevs/gradle-vaadin-plugin/issues/451
-//    logToConsole = true
-//    vaadinRun {
-//        server = 'jetty'
-//    }
-}
-
 gretty {
     contextPath = '/'
+}
+
+vaadin {
+    version '8.1.4'
 }
 
 dependencies {
