@@ -16,8 +16,8 @@ vaadin {
 }
 
 dependencies {
-    compile 'com.github.vok:vok-framework:0.2.5'
-    compile 'com.github.vok:vok-framework-sql2o:0.2.5'
+    compile 'com.github.vok:vok-framework:0.2.6'
+    compile 'com.github.vok:vok-framework-sql2o:0.2.6'
 
     // logging
     // currently we are logging through the SLF4J API to LogBack. See logback.xml file for the logger configuration
@@ -26,12 +26,9 @@ dependencies {
     // this will configure Vaadin to log to SLF4J
     compile 'org.slf4j:jul-to-slf4j:1.7.25'
 
-    // Vaadin - has to be here even though vaadin.manageDependencies is true:
-    // Gretty won't pull in Vaadin dependencies on appRun and will crash because of missing widgetset
-    compile "com.vaadin:vaadin-client-compiled:$vaadin_version"
-    compile "com.vaadin:vaadin-server:$vaadin_version"
-    compile "com.vaadin:vaadin-push:$vaadin_version"
-    compile "com.vaadin:vaadin-themes:$vaadin_version"
+    // workaround until https://youtrack.jetbrains.com/issue/IDEA-178071 is fixed
+    compile "com.vaadin:vaadin-themes:${vaadin.version}"
+    compile "com.vaadin:vaadin-client-compiled:${vaadin.version}"
     providedCompile 'javax.servlet:javax.servlet-api:3.1.0'
 
     // validation
