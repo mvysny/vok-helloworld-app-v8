@@ -12,12 +12,11 @@ gretty {
 }
 
 vaadin {
-    version '8.1.4'
+    version '8.1.5'
 }
 
 dependencies {
-    compile 'com.github.vok:vok-framework:0.2.6'
-    compile 'com.github.vok:vok-framework-sql2o:0.2.6'
+    compile 'com.github.vok:vok-framework-sql2o:0.3.0'
 
     // logging
     // currently we are logging through the SLF4J API to LogBack. See logback.xml file for the logger configuration
@@ -30,12 +29,6 @@ dependencies {
     compile "com.vaadin:vaadin-themes:${vaadin.version}"
     compile "com.vaadin:vaadin-client-compiled:${vaadin.version}"
     providedCompile 'javax.servlet:javax.servlet-api:3.1.0'
-
-    // validation
-    compile 'javax.validation:validation-api:1.0.0.GA'  // so that the BeanFieldGroup will perform JSR303 validations
-    compile 'org.hibernate:hibernate-validator:5.4.1.Final'
-    // http://stackoverflow.com/questions/24386771/javax-validation-validationexception-hv000183-unable-to-load-javax-el-express
-    compile 'org.glassfish.web:javax.el:2.2.6'
 
     // db
     compile 'org.flywaydb:flyway-core:4.2.0'
