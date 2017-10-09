@@ -1,10 +1,10 @@
 buildscript {
-    ext.kotlin_version = '1.1.4-3'
-    ext.vaadin_version = '8.1.4'
+    ext.kotlin_version = '1.1.51'
+    ext.vaadin_version = '8.1.5'
 }
 
 plugins {
-    id "org.jetbrains.kotlin.jvm" version "1.1.4-3"
+    id "org.jetbrains.kotlin.jvm" version "1.1.51"
 }
 
 defaultTasks 'clean', 'build'
