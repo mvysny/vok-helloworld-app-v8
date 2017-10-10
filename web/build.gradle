@@ -27,6 +27,7 @@ dependencies {
 
     // workaround until https://youtrack.jetbrains.com/issue/IDEA-178071 is fixed
     compile "com.vaadin:vaadin-themes:${vaadin.version}"
+    compile "com.vaadin:vaadin-push:${vaadin.version}"
     compile "com.vaadin:vaadin-client-compiled:${vaadin.version}"
     providedCompile 'javax.servlet:javax.servlet-api:3.1.0'
 
