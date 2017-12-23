@@ -6,6 +6,7 @@ import com.vaadin.annotations.Push
 import com.vaadin.annotations.Theme
 import com.vaadin.annotations.Title
 import com.vaadin.navigator.Navigator
+import com.vaadin.navigator.PushStateNavigation
 import com.vaadin.navigator.View
 import com.vaadin.navigator.ViewDisplay
 import com.vaadin.server.Page
@@ -26,6 +27,7 @@ import org.slf4j.LoggerFactory
 @Theme("mytheme")
 @Title("Vaadin On Kotlin")
 @Push(transport = Transport.WEBSOCKET_XHR)
+@PushStateNavigation
 class MyUI : UI() {
 
     private val content = Content()
