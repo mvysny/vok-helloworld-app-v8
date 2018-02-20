@@ -12,7 +12,7 @@ vaadin {
 }
 
 dependencies {
-    compile 'com.github.vok:vok-framework-sql2o:0.3.1'
+    compile 'com.github.vok:vok-framework-sql2o:0.3.2'
     compile "com.github.vok.karibudsl:karibu-dsl-v8:0.2.22"
 
     // logging
