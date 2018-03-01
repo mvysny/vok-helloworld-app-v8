@@ -17,7 +17,7 @@ cd vok-helloworld-app
 ./gradlew build web:appRun
 ```
 
-The app will be running on http://localhost:8080/
+The app will be running on [http://localhost:8080/](http://localhost:8080/).
 
 ## The 'complete' sources
 
@@ -65,6 +65,38 @@ When using the runtime compiler, running the application in the "run" mode
 significantly.
 
 It is highly recommended to disable runtime compilation for production WAR files.
+
+## Dissection of project files
+
+Let's look at all files that this project is composed of, and what are the points where you'll add functionality:
+
+| Files | Meaning
+| ----- | -------
+| [build.gradle](build.gradle) | [Gradle](https://gradle.org/) build tool configuration files. Gradle is used to compile your app, download all dependency jars and build a war file
+| [gradlew](gradlew), [gradlew.bat](gradlew.bat), [gradle/](gradle) | Gradle runtime files, so that you can build your app from command-line simply by running `./gradlew`, without having to download and install Gradle distribution yourself.
+| [.travis.yml](.travis.yml) | Configuration file for [Travis-CI](http://travis-ci.org/) which tells Travis how to build the app. Travis watches your repo; it automatically builds your app and runs all the tests after every commit.
+| [.gitignore](.gitignore) | Tells [Git](https://git-scm.com/) to ignore files that can be produced from your app's sources - be it files produced by Gradle, Intellij project files etc.
+| [web/](web/) | The web Gradle module which will host the web application itself. You can add more Gradle modules as your project will grow. Visit the [web module docs](web/) for more documentation.
+| [web/src/main/resources/](web/src/main/resources) | A bunch of static files not compiled by Kotlin in any way; see below for explanation.
+| [logback.xml](src/main/resources/logback.xml) | We're using [Slf4j](https://www.slf4j.org/) for logging and this is the configuration file for Slf4j
+| [db/migration/](src/main/resources/db/migration) | Database upgrade instructions for the [Flyway](https://flywaydb.org/) framework. Database is upgraded on every server boot, to ensure it's always up-to-date. See the [Migration Naming Guide](https://flywaydb.org/documentation/migrations#naming) for more details.
+| [webapp/](src/main/webapp) | contains the implementations of the Polymer components, and the global app CSS file. The [ReviewsList.kt](src/main/kotlin/com/vaadin/starter/beveragebuddy/ui/ReviewsList.kt) demonstrates how to use a Polymer component server-side. The CSS file references the Vaadin Lumo theme and configures it by the means of CSS variables.
+| [webapp/frontend/](src/main/webapp/frontend) | contains the implementations of the Polymer components, and the global app CSS file.
+| [frontend/styles.html](src/main/webapp/frontend/styles.html) | The CSS styles applied to your web app. Vaadin by default uses [Vaadin Lumo Theme](https://vaadin.com/themes/lumo); you can tweak the Lumo theme by the means of setting CSS variables.
+| [frontend/reviews-list.html](src/main/webapp/frontend/reviews-list.html) | Contains the client-side implementation of a Polymer web component. The [ReviewsList.kt](src/main/kotlin/com/vaadin/starter/beveragebuddy/ui/ReviewsList.kt) then demonstrates how to use a Polymer component server-side.
+| [src/main/kotlin/](src/main/kotlin) | The main Kotlin sources of your web app. You'll be mostly editing files located in this folder.
+| [Bootstrap.kt](src/main/kotlin/com/vaadin/starter/beveragebuddy/Bootstrap.kt) | When Servlet Container (such as Tomcat) starts your app, it will run the `Bootstrap.contextInitialized()` function before any calls to your app are made. We need to bootstrap the Vaadin-on-Kotlin framework, in order to have support for the database; then we'll run Flyway migration scripts, to make sure that the database is up-to-date. After that's done, your app is ready to be serving client browsers.
+| [FlowWorkarounds.kt](src/main/kotlin/com/vaadin/starter/beveragebuddy/FlowWorkarounds.kt) | Contains workarounds for bugs in Vaadin 10. When those bugs are fixed, this file will be removed.
+| [MainLayout.kt](src/main/kotlin/com/vaadin/starter/beveragebuddy/ui/MainLayout.kt) | The main view of the app, it defines how the UI looks like and how the components are nested into one another. The UI is defined by the means of so-called DSL; see [Karibu-DSL examples](https://github.com/mvysny/karibu-dsl#how-to-write-dsls-for-vaadin-8-and-vaadin8-v7-compat) for more examples.
+| [CategoriesList.kt](src/main/kotlin/com/vaadin/starter/beveragebuddy/ui/CategoriesList.kt) | An example view which is constructed entirely server-side. Demonstrates the use of the Vaadin Grid component.
+| [ReviewsList.kt](src/main/kotlin/com/vaadin/starter/beveragebuddy/ui/ReviewsList.kt) | An example view which is a Polymer web component.
+| [ConfirmationDialog.kt](src/main/kotlin/com/vaadin/starter/beveragebuddy/ui/ConfirmationDialog.kt) | An example of a Yes-No dialog built entirely server-side.
+| [AbstractEditorDialog.kt](src/main/kotlin/com/vaadin/starter/beveragebuddy/ui/AbstractEditorDialog.kt), [CategoryEditorDialog.kt](src/main/kotlin/com/vaadin/starter/beveragebuddy/ui/CategoryEditorDialog.kt), [ReviewEditorDialog.kt](src/main/kotlin/com/vaadin/starter/beveragebuddy/ui/ReviewEditorDialog.kt) | Forms editing particular database entities, implemented as a dialogs.
+| [converters/](src/main/kotlin/com/vaadin/starter/beveragebuddy/ui/converters) | Form helpers. They convert values from raw values as present in the database entity, into a value that's expected by the form components. For example a TextField expects String, but it needs to be converted to Int if editing an age.
+| [backend/](src/main/kotlin/com/vaadin/starter/beveragebuddy/ui/backend) | Demonstrates the use of the [VoK-ORM](https://github.com/mvysny/vok-orm) framework to represent database rows as objects
+| [RestService.kt/](src/main/kotlin/com/vaadin/starter/beveragebuddy/ui/backend/RestService.kt) | Demonstrates the possibility of having REST endpoints. See the class sources for details on how to test those endpoints
+| [DemoData.kt/](src/main/kotlin/com/vaadin/starter/beveragebuddy/ui/backend/DemoData.kt) | Pre-populates the database with some example data.
+| [Category.kt/](src/main/kotlin/com/vaadin/starter/beveragebuddy/ui/backend/Category.kt), [Review.kt/](src/main/kotlin/com/vaadin/starter/beveragebuddy/ui/backend/Review.kt) | Two entities. Category simply lists a list of beverage categories such as 'Beer'. Review lists reviews made for a particular beverage; it references the beverage category as a foreign key into the Category table.
 
 # Development with Intellij IDEA Ultimate
 
