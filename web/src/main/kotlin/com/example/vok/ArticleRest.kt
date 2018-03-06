@@ -1,7 +1,7 @@
 package com.example.vok
 
-import com.github.vok.framework.sql2o.*
-import com.github.vok.framework.sql2o.vaadin.getAll
+import com.github.vok.karibudsl.getAll
+import com.github.vokorm.*
 import javax.ws.rs.*
 import javax.ws.rs.core.MediaType
 

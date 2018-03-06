@@ -1,8 +1,7 @@
 package com.example.vok
 
-import com.fasterxml.jackson.annotation.JsonIgnore
-import com.github.vok.framework.sql2o.*
 import com.github.vok.framework.sql2o.vaadin.*
+import com.github.vokorm.*
 import com.vaadin.data.provider.DataProvider
 import org.hibernate.validator.constraints.Length
 import javax.validation.constraints.NotNull
@@ -18,7 +17,6 @@ data class Article(
 ) : Entity<Long> {
     companion object : Dao<Article>
 
-    @get:JsonIgnore
     val comments: DataProvider<Comment, Filter<Comment>?> get() = Comment.dataProvider.and { Comment::article_id eq id }
 
     override fun delete() {

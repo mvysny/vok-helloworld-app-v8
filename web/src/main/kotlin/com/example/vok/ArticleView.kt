@@ -1,7 +1,7 @@
 package com.example.vok
 
-import com.github.vok.framework.sql2o.get
 import com.github.vok.karibudsl.*
+import com.github.vokorm.getById
 import com.vaadin.navigator.*
 import com.vaadin.ui.*
 import com.vaadin.ui.themes.ValoTheme
@@ -35,7 +35,7 @@ class ArticleView: VerticalLayout(), View {
     }
     override fun enter(event: ViewChangeListener.ViewChangeEvent) {
         val articleId = event.parameterList[0]?.toLong() ?: throw RuntimeException("Article ID is missing")
-        article = Article[articleId]
+        article = Article.getById(articleId)
         title.value = article.title
         text.value = article.text
         comments.articleId = article.id!!

@@ -1,8 +1,7 @@
 package com.example.vok
 
-import com.github.vok.framework.sql2o.get
-import com.github.vok.framework.sql2o.vaadin.getAll
 import com.github.vok.karibudsl.*
+import com.github.vokorm.getById
 import com.vaadin.ui.*
 import com.vaadin.ui.themes.ValoTheme
 
@@ -15,7 +14,7 @@ class CommentsComponent : VerticalLayout() {
 
     fun refresh() {
         removeAllComponents()
-        Article[articleId].comments.getAll().forEach { comment ->
+        Article.getById(articleId).comments.getAll().forEach { comment ->
             label {
                 html("<p><strong>Commenter:</strong>${comment.commenter}</p><p><strong>Comment:</strong>${comment.body}</p>")
             }

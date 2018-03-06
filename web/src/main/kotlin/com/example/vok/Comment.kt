@@ -1,7 +1,6 @@
 package com.example.vok
 
-import com.fasterxml.jackson.annotation.JsonIgnore
-import com.github.vok.framework.sql2o.*
+import com.github.vokorm.*
 import org.hibernate.validator.constraints.Length
 import javax.validation.constraints.NotNull
 
@@ -20,6 +19,5 @@ data class Comment(
 ) : Entity<Long> {
     companion object : Dao<Comment>
 
-    @get:JsonIgnore
     val article: Article? get() = if (article_id == null) null else Article.findById(article_id!!)
 }

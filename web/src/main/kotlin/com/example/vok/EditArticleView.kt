@@ -1,7 +1,7 @@
 package com.example.vok
 
-import com.github.vok.framework.sql2o.get
 import com.github.vok.karibudsl.*
+import com.github.vokorm.getById
 import com.vaadin.navigator.*
 import com.vaadin.ui.VerticalLayout
 import com.vaadin.ui.themes.ValoTheme
@@ -17,7 +17,7 @@ class EditArticleView : VerticalLayout(), View {
     }
     override fun enter(event: ViewChangeListener.ViewChangeEvent) {
         val articleId = event.parameterList[0]!!.toLong()
-        editor.article = Article[articleId]
+        editor.article = Article.getById(articleId)
     }
 
     companion object {
