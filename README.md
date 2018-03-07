@@ -5,7 +5,7 @@
 Template for a simple Vaadin-on-Kotlin application that only requires a Servlet 3.0 container to run.
 Just clone this repo and start building your awesome app!
 
-To start creating your app, just follow the [Getting Started tutorial](http://www.vaadinonkotlin.eu/gettingstarted.html).
+You'll start with this app when you follow the [Getting Started tutorial](http://www.vaadinonkotlin.eu/gettingstarted.html).
 
 # Getting Started
 
