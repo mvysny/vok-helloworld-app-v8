@@ -9,7 +9,6 @@ import com.vaadin.ui.themes.ValoTheme
 
 @AutoView
 class ArticlesView: VerticalLayout(), View {
-    private val dataSource = Article.dataProvider
     private val grid: Grid<Article>
     init {
         setSizeFull()
@@ -19,20 +18,22 @@ class ArticlesView: VerticalLayout(), View {
         button("New Article", { navigateToView<CreateArticleView>() }) {
             styleName = ValoTheme.BUTTON_LINK
         }
-        grid = grid(Article::class, null, dataSource) {
+        grid = grid(dataProvider = Article.dataProvider) {
             expandRatio = 1f; setSizeFull()
-            showColumns(Article::id, Article::title, Article::text)
+            addColumnFor(Article::id)
+            addColumnFor(Article::title)
+            addColumnFor(Article::text)
             addColumn({ "Show" }, ButtonRenderer<Article>({ event -> ArticleView.navigateTo(event.item.id!!) }))
             addColumn({ "Edit" }, ButtonRenderer<Article>({ event -> EditArticleView.navigateTo(event.item.id!!) }))
             addColumn({ "Destroy" }, ButtonRenderer<Article>({ event ->
                 confirmDialog {
                     event.item.delete()
-                    this@grid.dataProvider.refreshAll()
+                    this@grid.refresh()
                 }
             }))
         }
     }
     override fun enter(event: ViewChangeListener.ViewChangeEvent?) {
-        grid.dataProvider.refreshAll()
+        grid.refresh()
     }
 }
