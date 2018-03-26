@@ -12,7 +12,7 @@ vaadin {
 }
 
 dependencies {
-    compile 'com.github.vok:vok-framework-sql2o:0.4.4'
+    compile "com.github.vok:vok-framework-sql2o:$vok_version"
 
     // logging
     // currently we are logging through the SLF4J API to LogBack. See logback.xml file for the logger configuration
@@ -32,7 +32,7 @@ dependencies {
     compile 'com.h2database:h2:1.4.196'
 
     // REST
-    compile 'com.github.vok:vok-rest:0.4.4'
+    compile "com.github.vok:vok-rest:$vok_version"
 
     // Kotlin
     compile "org.jetbrains.kotlin:kotlin-stdlib-jdk8:$kotlin_version"
