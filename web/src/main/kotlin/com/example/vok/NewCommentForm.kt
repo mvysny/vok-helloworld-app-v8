@@ -17,7 +17,9 @@ class NewCommentForm : FormLayout() {
         textField("Body:") {
             bind(commentBinder).bind(Comment::body)
         }
-        createComment = button("Create", { createComment() })
+        createComment = button("Create") {
+            onLeftClick { createComment() }
+        }
     }
 
     private fun createComment() {

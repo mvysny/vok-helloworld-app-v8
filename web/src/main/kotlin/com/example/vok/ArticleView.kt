@@ -26,11 +26,13 @@ class ArticleView: VerticalLayout(), View {
         newComment = newCommentForm {
             commentCreatedListener = { comments.refresh() }
         }
-        button("Edit", { EditArticleView.navigateTo(article.id!!) }) {
+        button("Edit") {
             styleName = ValoTheme.BUTTON_LINK
+            onLeftClick { EditArticleView.navigateTo(article.id!!) }
         }
-        button("Back", { navigateToView<ArticlesView>() }) {
+        button("Back") {
             styleName = ValoTheme.BUTTON_LINK
+            onLeftClick { navigateToView<ArticlesView>() }
         }
     }
     override fun enter(event: ViewChangeListener.ViewChangeEvent) {

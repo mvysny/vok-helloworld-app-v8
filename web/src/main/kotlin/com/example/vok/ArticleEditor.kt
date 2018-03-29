@@ -21,17 +21,20 @@ class ArticleEditor : VerticalLayout() {
         textArea("Text") {
             bind(binder).bind(Article::text)
         }
-        button("Save Article", { event ->
-            val article = article!!
-            if (binder.validate().isOk && binder.writeBeanIfValid(article)) {
-                article.save()
-                ArticleView.navigateTo(article.id!!)
-            } else {
-                event.button.componentError = UserError("There are invalid fields")
+        button("Save Article") {
+            onLeftClick { event ->
+                val article = article!!
+                if (binder.validate().isOk && binder.writeBeanIfValid(article)) {
+                    article.save()
+                    ArticleView.navigateTo(article.id!!)
+                } else {
+                    event.button.componentError = UserError("There are invalid fields")
+                }
             }
-        })
-        button("Back", { navigateToView<ArticlesView>() }) {
+        }
+        button("Back") {
             styleName = ValoTheme.BUTTON_LINK
+            onLeftClick { navigateToView<ArticlesView>() }
         }
     }
 }

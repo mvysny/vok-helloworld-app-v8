@@ -15,8 +15,9 @@ class ArticlesView: VerticalLayout(), View {
         label("Listing Articles") {
             styleName = ValoTheme.LABEL_H1
         }
-        button("New Article", { navigateToView<CreateArticleView>() }) {
+        button("New Article") {
             styleName = ValoTheme.BUTTON_LINK
+            onLeftClick { navigateToView<CreateArticleView>() }
         }
         grid = grid(dataProvider = Article.dataProvider) {
             expandRatio = 1f; setSizeFull()

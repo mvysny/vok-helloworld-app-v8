@@ -13,8 +13,9 @@ class MyWelcomeView: VerticalLayout(), View {
             label("Hello, Vaadin-on-Kotlin!") {
                 styleName = ValoTheme.LABEL_H1
             }
-            button("My Blog", { navigateToView<ArticlesView>() }) {
+            button("My Blog") {
                 styleName = ValoTheme.BUTTON_LINK
+                onLeftClick { navigateToView<ArticlesView>() }
             }
         }
     }
