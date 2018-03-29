@@ -28,7 +28,9 @@ fun confirmDialog(text: String = "Are you sure?", title: String? = null, yesList
                     onLeftClick { yesListener(); window.close() }
                     setPrimary()
                 }
-                button("No", { window.close() })
+                button("No") {
+                    onLeftClick { window.close() }
+                }
             }
         }
     }
