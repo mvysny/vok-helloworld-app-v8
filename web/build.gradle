@@ -13,6 +13,7 @@ vaadin {
 
 dependencies {
     compile "com.github.vok:vok-framework-sql2o:$vok_version"
+    compile "com.github.vok.karibudsl:karibu-dsl-v8:$karibudsl_version"
 
     // logging
     // currently we are logging through the SLF4J API to LogBack. See logback.xml file for the logger configuration

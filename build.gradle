@@ -1,6 +1,7 @@
 buildscript {
     ext.kotlin_version = '1.2.31'
     ext.vok_version = '0.4.5'
+    ext.karibudsl_version = '0.4.0'
 }
 
 plugins {
