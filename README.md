@@ -1,4 +1,4 @@
-[![Build Status](https://travis-ci.org/mvysny/vok-helloword-app.svg?branch=master)](https://travis-ci.org/mvysny/vok-helloword-app)
+[![Build Status](https://travis-ci.org/mvysny/vok-helloworld-app.svg?branch=master)](https://travis-ci.org/mvysny/vok-helloworld-app)
 
 # Vaadin-on-Kotlin Example App / Archetype
 
@@ -12,7 +12,7 @@ You'll start with this app when you follow the [Getting Started tutorial](http:/
 To quickly start the app, make sure that you have Java 8 JDK installed. Then, just type this into your terminal:
 
 ```bash
-git clone https://github.com/mvysny/vok-helloword-app
+git clone https://github.com/mvysny/vok-helloworld-app
 cd vok-helloworld-app
 ./gradlew build web:appRun
 ```

@@ -26,7 +26,7 @@ class WelcomeView: VerticalLayout(), View {
             label { html("<strong>JVM version: </strong> $jvmVersion") }
         }
     }
-    override fun enter(event: ViewChangeListener.ViewChangeEvent?) {
+    override fun enter(event: ViewChangeListener.ViewChangeEvent) {
     }
 }
 
