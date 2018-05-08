@@ -26,8 +26,6 @@ class WelcomeView: VerticalLayout(), View {
             label { html("<strong>JVM version: </strong> $jvmVersion") }
         }
     }
-    override fun enter(event: ViewChangeListener.ViewChangeEvent) {
-    }
 }
 
 val jvmVersion: String get() = System.getProperty("java.version")
