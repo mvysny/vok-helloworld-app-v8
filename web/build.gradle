@@ -1,14 +1,13 @@
 apply plugin: 'war'
-apply plugin: "org.akhikhl.gretty"
-// commented out until this is resolved: https://github.com/johndevs/gradle-vaadin-plugin/issues/501
-// apply plugin: 'com.devsoap.plugin.vaadin'
+apply plugin: "org.gretty"
+apply plugin: 'com.devsoap.plugin.vaadin'
 
 gretty {
     contextPath = '/'
 }
 
 vaadin {
-    version '8.3.2'
+    version '8.4.1'
 }
 
 dependencies {
