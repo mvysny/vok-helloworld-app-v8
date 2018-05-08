@@ -2,7 +2,7 @@
 
 # Vaadin-on-Kotlin Example App / Archetype
 
-Template for a simple Vaadin-on-Kotlin application that only requires a Servlet 3.0 container to run.
+Template for a simple Vaadin-on-Kotlin Vaadin 8-based application that only requires a Servlet 3.0 container to run.
 Just clone this repo and start building your awesome app!
 
 You'll start with this app when you follow the [Getting Started tutorial](http://www.vaadinonkotlin.eu/gettingstarted.html).
