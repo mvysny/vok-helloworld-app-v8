@@ -16,6 +16,4 @@ class CreateArticleView: VerticalLayout(), View {
             article = Article()
         }
     }
-    override fun enter(event: ViewChangeListener.ViewChangeEvent?) {
-    }
 }

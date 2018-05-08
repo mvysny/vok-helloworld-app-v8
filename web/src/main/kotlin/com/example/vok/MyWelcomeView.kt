@@ -19,6 +19,4 @@ class MyWelcomeView: VerticalLayout(), View {
             }
         }
     }
-    override fun enter(event: ViewChangeListener.ViewChangeEvent?) {
-    }
 }
