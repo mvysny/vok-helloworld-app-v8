@@ -7,7 +7,7 @@ gretty {
 }
 
 vaadin {
-    version '8.5.0.rc1'
+    version '8.5.1'
 }
 
 dependencies {
@@ -28,12 +28,12 @@ dependencies {
     providedCompile 'javax.servlet:javax.servlet-api:3.1.0'
 
     // db
-    compile 'org.flywaydb:flyway-core:5.0.7'
-    compile 'com.h2database:h2:1.4.196'
+    compile 'org.flywaydb:flyway-core:5.1.4'
+    compile 'com.h2database:h2:1.4.197'
 
     // REST
     compile "com.github.vok:vok-rest:$vok_version"
 
     // Kotlin
-    compile "org.jetbrains.kotlin:kotlin-stdlib-jdk8:$kotlin_version"
+    compile "org.jetbrains.kotlin:kotlin-stdlib-jdk8"
 }
