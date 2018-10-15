@@ -4,6 +4,7 @@ apply plugin: 'com.devsoap.plugin.vaadin'
 
 gretty {
     contextPath = '/'
+    servletContainer = 'jetty9.4'
 }
 
 vaadin {
