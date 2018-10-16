@@ -1,6 +1,6 @@
 buildscript {
-    ext.vok_version = '0.5.0'
-    ext.karibudsl_version = '0.4.10'
+    ext.vok_version = '0.5.1'
+    ext.karibudsl_version = '0.4.11'
 }
 
 plugins {
@@ -22,7 +22,8 @@ subprojects {
 
     repositories {
         jcenter()
-    }
+        maven { url "https://dl.bintray.com/mvysny/github" }
+   }
 
     apply plugin: 'kotlin'
     compileKotlin {
