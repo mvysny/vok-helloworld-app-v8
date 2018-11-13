@@ -12,10 +12,7 @@ import com.vaadin.server.Page
 import com.vaadin.server.VaadinRequest
 import com.vaadin.shared.Position
 import com.vaadin.shared.ui.ui.Transport
-import com.vaadin.ui.Component
-import com.vaadin.ui.Notification
-import com.vaadin.ui.UI
-import com.vaadin.ui.VerticalLayout
+import com.vaadin.ui.*
 import com.vaadin.ui.themes.ValoTheme
 import org.slf4j.LoggerFactory
 
@@ -33,7 +30,7 @@ class MyUI : UI() {
 
     override fun init(request: VaadinRequest?) {
         if (LoginService.currentUser == null) {
-            setContent(LoginForm())
+            setContent(LoginView())
             return
         }
         setContent(content)
