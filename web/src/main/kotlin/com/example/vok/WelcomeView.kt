@@ -1,8 +1,7 @@
 package com.example.vok
 
-import com.github.vok.karibudsl.*
+import com.github.mvysny.karibudsl.v8.*
 import com.vaadin.navigator.View
-import com.vaadin.navigator.ViewChangeListener
 import com.vaadin.server.ThemeResource
 import com.vaadin.shared.Version
 import com.vaadin.ui.Alignment
