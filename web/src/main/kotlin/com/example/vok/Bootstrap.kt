@@ -81,7 +81,8 @@ class Bootstrap: ServletContextListener {
 class MyUIServlet : VaadinServlet()
 
 /**
- * Provides access to person list. To test, just run `curl http://localhost:8080/rest/person`
+ * Provides access to REST services. Uses the Javalin library to export the REST services; the services are configured
+ * in the [configureRest] method.
  */
 @WebServlet(urlPatterns = ["/rest/*"], name = "JavalinRestServlet", asyncSupported = false)
 class JavalinRestServlet : HttpServlet() {
