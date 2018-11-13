@@ -9,24 +9,35 @@ import java.io.Serializable
 
 data class User(val name: String) : Serializable
 
-object LoginService {
-    fun login(user: User) {
-        Session[User::class] = user
+class LoginService : Serializable {
+    fun login(username: String, password: String): Boolean {
+        currentUser = User(username)
         Page.getCurrent().reload()
+        return true
     }
-    val currentUser: User? get() = Session[User::class]
+    var currentUser: User? = null
+    private set
+
     fun logout() {
         VaadinSession.getCurrent().close()
         Page.getCurrent().reload()
     }
+
+    val isLoggedIn get() = currentUser != null
 }
+
+val Session.loginService: LoginService get() = getOrPut { LoginService() }
 
 class LoginView : VerticalLayout() {
     init {
         setSizeFull()
         loginForm("Vaadin-on-Kotlin Sample App") {
             alignment = Alignment.MIDDLE_CENTER
-            onLogin { username, password -> LoginService.login(User(username)) }
+            onLogin { username, password ->
+                if (!Session.loginService.login(username, password)) {
+                    usernameField.componentError = UserError("The user does not exist or invalid password")
+                }
+            }
         }
     }
 }

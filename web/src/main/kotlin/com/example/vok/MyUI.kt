@@ -14,6 +14,7 @@ import com.vaadin.shared.Position
 import com.vaadin.shared.ui.ui.Transport
 import com.vaadin.ui.*
 import com.vaadin.ui.themes.ValoTheme
+import eu.vaadinonkotlin.vaadin8.Session
 import org.slf4j.LoggerFactory
 
 /**
@@ -29,7 +30,7 @@ class MyUI : UI() {
     private val content = Content()
 
     override fun init(request: VaadinRequest?) {
-        if (LoginService.currentUser == null) {
+        if (!Session.loginService.isLoggedIn) {
             setContent(LoginView())
             return
         }
