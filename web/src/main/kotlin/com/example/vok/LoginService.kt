@@ -1,11 +1,11 @@
 package com.example.vok
 
-import com.github.vok.framework.Session
-import com.github.vok.karibudsl.*
+import com.github.mvysny.karibudsl.v8.*
 import com.vaadin.icons.VaadinIcons
 import com.vaadin.server.*
 import com.vaadin.ui.*
 import com.vaadin.ui.themes.ValoTheme
+import eu.vaadinonkotlin.vaadin8.Session
 import java.io.Serializable
 
 data class User(val name: String) : Serializable

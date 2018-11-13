@@ -1,5 +1,6 @@
 package com.example.vok
 
+import com.github.mvysny.karibudsl.v8.getAll
 import com.github.vokorm.*
 import io.javalin.Javalin
 import io.javalin.NotFoundResponse

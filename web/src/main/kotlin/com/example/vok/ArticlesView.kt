@@ -1,11 +1,11 @@
 package com.example.vok
 
-import com.github.vok.framework.sql2o.vaadin.dataProvider
-import com.github.vok.karibudsl.*
+import com.github.mvysny.karibudsl.v8.*
 import com.vaadin.navigator.*
 import com.vaadin.ui.*
 import com.vaadin.ui.renderers.ButtonRenderer
 import com.vaadin.ui.themes.ValoTheme
+import eu.vaadinonkotlin.vaadin8.sql2o.dataProvider
 
 @AutoView
 class ArticlesView: VerticalLayout(), View {
