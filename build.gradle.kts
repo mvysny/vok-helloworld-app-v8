@@ -20,7 +20,6 @@ subprojects {
 
     repositories {
         jcenter()
-        maven { setUrl("https://dl.bintray.com/mvysny/github") }
     }
 
     apply { plugin("kotlin") }

@@ -1,10 +1,14 @@
 package com.example.vok
 
-import com.github.vok.framework.VaadinOnKotlin
-import com.github.vok.framework.sql2o.dataSource
-import com.github.vok.framework.sql2o.dataSourceConfig
+import com.google.gson.GsonBuilder
+import eu.vaadinonkotlin.VaadinOnKotlin
 import com.vaadin.annotations.VaadinServletConfiguration
 import com.vaadin.server.VaadinServlet
+import eu.vaadinonkotlin.rest.configureToJavalin
+import eu.vaadinonkotlin.sql2o.dataSource
+import eu.vaadinonkotlin.sql2o.dataSourceConfig
+import io.javalin.EmbeddedJavalin
+import io.javalin.Javalin
 import org.flywaydb.core.Flyway
 import org.h2.Driver
 import org.slf4j.LoggerFactory
@@ -13,8 +17,9 @@ import javax.servlet.ServletContextEvent
 import javax.servlet.ServletContextListener
 import javax.servlet.annotation.WebListener
 import javax.servlet.annotation.WebServlet
-import javax.ws.rs.ApplicationPath
-import javax.ws.rs.core.Application
+import javax.servlet.http.HttpServlet
+import javax.servlet.http.HttpServletRequest
+import javax.servlet.http.HttpServletResponse
 
 /**
  * Boots the app:
@@ -76,7 +81,21 @@ class Bootstrap: ServletContextListener {
 class MyUIServlet : VaadinServlet()
 
 /**
- * RESTEasy configuration. Do not use Jersey, it has a tons of dependencies
+ * Provides access to person list. To test, just run `curl http://localhost:8080/rest/person`
  */
-@ApplicationPath("/rest")
-class ApplicationConfig : Application()
+@WebServlet(urlPatterns = ["/rest/*"], name = "JavalinRestServlet", asyncSupported = false)
+class JavalinRestServlet : HttpServlet() {
+    val javalin = EmbeddedJavalin()
+            .configureRest()
+            .createServlet()
+
+    override fun service(req: HttpServletRequest, resp: HttpServletResponse) {
+        javalin.service(req, resp)
+    }
+}
+
+fun Javalin.configureRest(): Javalin {
+    val gson = GsonBuilder().create()
+    gson.configureToJavalin()
+    return this
+}

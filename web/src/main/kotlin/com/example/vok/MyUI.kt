@@ -1,7 +1,6 @@
 package com.example.vok
 
-import com.github.vok.karibudsl.autoViewProvider
-import com.github.vok.karibudsl.isMargin
+import com.github.mvysny.karibudsl.v8.*
 import com.vaadin.annotations.Push
 import com.vaadin.annotations.Theme
 import com.vaadin.annotations.Title

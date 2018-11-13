@@ -1,6 +1,6 @@
 package com.example.vok
 
-import com.github.vok.karibudsl.*
+import com.github.mvysny.karibudsl.v8.*
 import com.vaadin.event.ShortcutAction
 import com.vaadin.ui.Alignment
 import com.vaadin.ui.UI
