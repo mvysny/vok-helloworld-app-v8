@@ -5,12 +5,12 @@ import com.vaadin.navigator.View
 import com.vaadin.server.ThemeResource
 import com.vaadin.shared.Version
 import com.vaadin.ui.Alignment
-import com.vaadin.ui.VerticalLayout
+import com.vaadin.ui.Composite
 import com.vaadin.ui.themes.ValoTheme
 
 @AutoView("old-welcome")
-class WelcomeView: VerticalLayout(), View {
-    init {
+class WelcomeView: Composite(), View {
+    private val root = verticalLayout {
         setSizeFull()
         isMargin = false
         verticalLayout {
