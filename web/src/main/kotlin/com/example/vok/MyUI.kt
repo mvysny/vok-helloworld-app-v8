@@ -12,10 +12,7 @@ import com.vaadin.server.Page
 import com.vaadin.server.VaadinRequest
 import com.vaadin.shared.Position
 import com.vaadin.shared.ui.ui.Transport
-import com.vaadin.ui.Component
-import com.vaadin.ui.Notification
-import com.vaadin.ui.UI
-import com.vaadin.ui.VerticalLayout
+import com.vaadin.ui.*
 import com.vaadin.ui.themes.ValoTheme
 import org.slf4j.LoggerFactory
 
@@ -29,7 +26,7 @@ import org.slf4j.LoggerFactory
 @PushStateNavigation
 class MyUI : UI() {
 
-    private val content = Content()
+    private val content = MainLayout()
 
     override fun init(request: VaadinRequest?) {
         setContent(content)
@@ -52,12 +49,12 @@ class MyUI : UI() {
     }
 }
 
-private class Content: VerticalLayout(), ViewDisplay {
-    init {
+private class MainLayout: Composite(), ViewDisplay {
+    private val root = verticalLayout {
         setSizeFull(); isMargin = false
     }
     override fun showView(view: View?) {
-        removeAllComponents()
-        addComponent(view as Component)
+        root.removeAllComponents()
+        root.addComponent(view as Component)
     }
 }
