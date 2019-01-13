@@ -5,22 +5,24 @@ import com.github.vokorm.getById
 import com.vaadin.ui.*
 import com.vaadin.ui.themes.ValoTheme
 
-class CommentsComponent : VerticalLayout() {
+class CommentsComponent : Composite() {
     var articleId: Long = 0L
         set(value) { field = value; refresh() }
-    init {
+    private val root = verticalLayout {
         caption = "Comments"; isMargin = false
     }
 
     fun refresh() {
-        removeAllComponents()
+        root.removeAllComponents()
         Article.getById(articleId).comments.getAll().forEach { comment ->
-            label {
-                html("<p><strong>Commenter:</strong>${comment.commenter}</p><p><strong>Comment:</strong>${comment.body}</p>")
-            }
-            button("Delete comment") {
-                styleName = ValoTheme.BUTTON_LINK
-                onLeftClick { comment.delete(); refresh() }
+            root.apply {
+                label {
+                    html("<p><strong>Commenter:</strong>${comment.commenter}</p><p><strong>Comment:</strong>${comment.body}</p>")
+                }
+                button("Delete comment") {
+                    styleName = ValoTheme.BUTTON_LINK
+                    onLeftClick { comment.delete(); refresh() }
+                }
             }
         }
     }
