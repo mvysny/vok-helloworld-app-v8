@@ -28,8 +28,8 @@ class LoginService : Serializable {
 
 val Session.loginService: LoginService get() = getOrPut { LoginService() }
 
-class LoginView : VerticalLayout() {
-    init {
+class LoginView : Composite() {
+    private val root = verticalLayout {
         setSizeFull()
         loginForm("Vaadin-on-Kotlin Sample App") {
             alignment = Alignment.MIDDLE_CENTER
