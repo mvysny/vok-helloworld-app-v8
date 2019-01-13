@@ -7,13 +7,13 @@ import com.vaadin.ui.*
 import com.vaadin.ui.themes.ValoTheme
 
 @AutoView
-class ArticleView: VerticalLayout(), View {
+class ArticleView: Composite(), View {
     private lateinit var article: Article
     private lateinit var title: Label
     private lateinit var text: Label
-    private val comments: CommentsComponent
-    private val newComment: NewCommentForm
-    init {
+    private lateinit var comments: CommentsComponent
+    private lateinit var newComment: NewCommentForm
+    private val root = verticalLayout {
         formLayout {
             title = label {
                 caption = "Title:"
