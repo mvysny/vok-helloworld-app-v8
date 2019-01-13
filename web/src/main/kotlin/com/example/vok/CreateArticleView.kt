@@ -2,13 +2,14 @@ package com.example.vok
 
 import com.github.mvysny.karibudsl.v8.*
 import com.vaadin.navigator.*
-import com.vaadin.ui.VerticalLayout
+import com.vaadin.ui.Composite
 import com.vaadin.ui.themes.ValoTheme
 
 @AutoView
-class CreateArticleView: VerticalLayout(), View {
-    private val editor: ArticleEditor
-    init {
+class CreateArticleView: Composite(), View {
+    private lateinit var editor: ArticleEditor
+
+    private val root = verticalLayout {
         label("New Article") {
             styleName = ValoTheme.LABEL_H1
         }
