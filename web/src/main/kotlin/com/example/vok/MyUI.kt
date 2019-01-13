@@ -27,7 +27,7 @@ import org.slf4j.LoggerFactory
 @PushStateNavigation
 class MyUI : UI() {
 
-    private val content = Content()
+    private val content = MainLayout()
 
     override fun init(request: VaadinRequest?) {
         if (!Session.loginService.isLoggedIn) {
@@ -54,12 +54,12 @@ class MyUI : UI() {
     }
 }
 
-private class Content: VerticalLayout(), ViewDisplay {
-    init {
+private class MainLayout: Composite(), ViewDisplay {
+    private val root = verticalLayout {
         setSizeFull(); isMargin = false
     }
     override fun showView(view: View?) {
-        removeAllComponents()
-        addComponent(view as Component)
+        root.removeAllComponents()
+        root.addComponent(view as Component)
     }
 }
