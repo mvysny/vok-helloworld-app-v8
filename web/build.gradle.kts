@@ -14,7 +14,7 @@ vaadin {
 }
 
 dependencies {
-    compile("eu.vaadinonkotlin:vok-framework-sql2o:${ext["vok_version"]}")
+    compile("eu.vaadinonkotlin:vok-framework-sql2o:${properties["vok_version"]}")
 
     // logging
     // currently we are logging through the SLF4J API to LogBack. See logback.xml file for the logger configuration
@@ -34,7 +34,7 @@ dependencies {
     compile("com.h2database:h2:1.4.197")
 
     // REST
-    compile("eu.vaadinonkotlin:vok-rest:${ext["vok_version"]}")
+    compile("eu.vaadinonkotlin:vok-rest:${properties["vok_version"]}")
 
     // Kotlin
     compile(kotlin("stdlib-jdk8"))
