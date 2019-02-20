@@ -5,6 +5,7 @@ import com.github.mvysny.karibudsl.v8.message
 import com.github.mvysny.kaributesting.v8._click
 import com.github.mvysny.kaributesting.v8._get
 import com.github.mvysny.kaributesting.v8._value
+import com.github.mvysny.kaributesting.v8.expectView
 import com.github.vokorm.findAll
 import com.vaadin.ui.Button
 import com.vaadin.ui.TextArea

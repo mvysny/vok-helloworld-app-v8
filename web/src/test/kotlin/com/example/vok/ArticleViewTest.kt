@@ -4,6 +4,7 @@ import com.github.mvysny.dynatest.DynaTest
 import com.github.mvysny.kaributesting.v8._click
 import com.github.mvysny.kaributesting.v8._expectOne
 import com.github.mvysny.kaributesting.v8._get
+import com.github.mvysny.kaributesting.v8.expectView
 import com.vaadin.ui.Button
 import com.vaadin.ui.Label
 import kotlin.test.expect
