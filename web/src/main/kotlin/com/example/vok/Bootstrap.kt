@@ -82,7 +82,7 @@ class MyUIServlet : VaadinServlet()
 
 /**
  * Provides access to REST services. Uses the Javalin library to export the REST services; the services are configured
- * in the [configureRest] method.
+ * in the [configureRest] method. For example, to see all articles, just run `curl localhost:8080/rest/articles`.
  */
 @WebServlet(urlPatterns = ["/rest/*"], name = "JavalinRestServlet", asyncSupported = false)
 class JavalinRestServlet : HttpServlet() {
