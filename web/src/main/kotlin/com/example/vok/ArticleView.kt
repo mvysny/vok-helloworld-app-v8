@@ -1,7 +1,6 @@
 package com.example.vok
 
 import com.github.mvysny.karibudsl.v8.*
-import com.github.vokorm.getById
 import com.vaadin.navigator.*
 import com.vaadin.ui.*
 import com.vaadin.ui.themes.ValoTheme
