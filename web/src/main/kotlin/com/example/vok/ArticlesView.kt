@@ -5,7 +5,7 @@ import com.vaadin.navigator.*
 import com.vaadin.ui.*
 import com.vaadin.ui.renderers.ButtonRenderer
 import com.vaadin.ui.themes.ValoTheme
-import eu.vaadinonkotlin.vaadin8.sql2o.dataProvider
+import eu.vaadinonkotlin.vaadin8.vokdb.dataProvider
 
 @AutoView
 class ArticlesView: Composite(), View {
