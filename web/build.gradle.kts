@@ -14,7 +14,8 @@ vaadin {
 }
 
 dependencies {
-    compile("eu.vaadinonkotlin:vok-framework-sql2o:${properties["vok_version"]}")
+    compile("eu.vaadinonkotlin:vok-framework-vokdb:${properties["vok_version"]}")
+    compile("com.zaxxer:HikariCP:3.4.1")
 
     // logging
     // currently we are logging through the SLF4J API to LogBack. See logback.xml file for the logger configuration
