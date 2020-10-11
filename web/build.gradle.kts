@@ -15,14 +15,14 @@ vaadin {
 
 dependencies {
     compile("eu.vaadinonkotlin:vok-framework-vokdb:${properties["vok_version"]}")
-    compile("com.zaxxer:HikariCP:3.4.1")
+    compile("com.zaxxer:HikariCP:3.4.5")
 
     // logging
     // currently we are logging through the SLF4J API to LogBack. See logback.xml file for the logger configuration
     compile("ch.qos.logback:logback-classic:1.2.3")
-    compile("org.slf4j:slf4j-api:1.7.28")
+    compile("org.slf4j:slf4j-api:1.7.30")
     // this will configure Vaadin to log to SLF4J
-    compile("org.slf4j:jul-to-slf4j:1.7.28")
+    compile("org.slf4j:jul-to-slf4j:1.7.30")
 
     // workaround until https://youtrack.jetbrains.com/issue/IDEA-178071 is fixed
     compile("com.vaadin:vaadin-themes:${vaadin.version}")
@@ -31,7 +31,7 @@ dependencies {
     providedCompile("javax.servlet:javax.servlet-api:3.1.0")
 
     // db
-    compile("org.flywaydb:flyway-core:6.1.0")
+    compile("org.flywaydb:flyway-core:6.1.4")
     compile("com.h2database:h2:1.4.200")
 
     // REST
