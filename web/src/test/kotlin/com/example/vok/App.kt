@@ -6,7 +6,6 @@ import com.github.mvysny.kaributesting.v8.MockVaadin
 import com.github.mvysny.kaributesting.v8._click
 import com.github.mvysny.kaributesting.v8._get
 import com.github.mvysny.kaributesting.v8._value
-import com.github.vokorm.deleteAll
 import com.vaadin.ui.Button
 import com.vaadin.ui.PasswordField
 import com.vaadin.ui.TextField

@@ -16,6 +16,7 @@ vaadin {
 dependencies {
     compile("eu.vaadinonkotlin:vok-framework-vokdb:${properties["vok_version"]}")
     compile("com.zaxxer:HikariCP:3.4.5")
+    compile("org.hibernate.validator:hibernate-validator:6.1.4.Final")
 
     // logging
     // currently we are logging through the SLF4J API to LogBack. See logback.xml file for the logger configuration
@@ -41,6 +42,6 @@ dependencies {
     compile(kotlin("stdlib-jdk8"))
 
     // test support
-    testCompile("com.github.mvysny.kaributesting:karibu-testing-v8:1.1.17")
-    testCompile("com.github.mvysny.dynatest:dynatest-engine:0.15")
+    testCompile("com.github.mvysny.kaributesting:karibu-testing-v8:1.2.5")
+    testCompile("com.github.mvysny.dynatest:dynatest-engine:0.19")
 }
