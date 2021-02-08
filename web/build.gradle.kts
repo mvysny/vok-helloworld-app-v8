@@ -20,10 +20,10 @@ dependencies {
 
     // logging
     // currently we are logging through the SLF4J API to SLF4J-Simple. See src/main/resources/simplelogger.properties file for the logger configuration
-    compile("org.slf4j:slf4j-simple:1.7.30")
-    compile("org.slf4j:slf4j-api:1.7.30")
+    compile("org.slf4j:slf4j-simple:${properties["slf4j_version"]}")
+    compile("org.slf4j:slf4j-api:${properties["slf4j_version"]}")
     // this will configure Vaadin to log to SLF4J
-    compile("org.slf4j:jul-to-slf4j:1.7.30")
+    compile("org.slf4j:jul-to-slf4j:${properties["slf4j_version"]}")
 
     // workaround until https://youtrack.jetbrains.com/issue/IDEA-178071 is fixed
     compile("com.vaadin:vaadin-themes:${vaadin.version}")
@@ -32,7 +32,7 @@ dependencies {
     providedCompile("javax.servlet:javax.servlet-api:3.1.0")
 
     // db
-    compile("org.flywaydb:flyway-core:6.1.4")
+    compile("org.flywaydb:flyway-core:7.1.1")
     compile("com.h2database:h2:1.4.200")
 
     // REST
