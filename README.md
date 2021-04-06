@@ -6,15 +6,16 @@
 Template for a simple Vaadin-on-Kotlin Vaadin 8-based application that only requires a Servlet 3.0 container to run.
 Just clone this repo and start building your awesome app!
 
-You'll start with this app when you follow the [Getting Started tutorial](http://www.vaadinonkotlin.eu/gettingstarted.html).
+**Deprecated**: uses old VoK version and Vaadin 8, no longer maintained. Please see [vok-helloworld-app](https://github.com/mvysny/vok-helloworld-app)
+for the up-to-date sources using newest Vaadin LTS.
 
 # Getting Started
 
 To quickly start the app, make sure that you have Java 8 JDK installed. Then, just type this into your terminal:
 
 ```bash
-git clone https://github.com/mvysny/vok-helloworld-app
-cd vok-helloworld-app
+git clone https://github.com/mvysny/vok-helloworld-app-v8
+cd vok-helloworld-app-v8
 ./gradlew build web:appRun
 ```
 
